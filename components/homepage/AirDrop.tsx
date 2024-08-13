@@ -1,13 +1,12 @@
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { Button } from '../ui/button';
 import { toast } from "react-hot-toast"
 
 export const Airdrop  = () => {
   const { connected } = useWallet();
-  const [message, setMessage] = useState<string>('');
 
   const handleAirDrop = () => {
     if(connected){

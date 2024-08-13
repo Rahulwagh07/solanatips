@@ -4,10 +4,18 @@ import React, { useState } from 'react';
 import Balance from '@/components/dashboard/Balance';
 import { Button } from '@/components/ui/button';
 import TipForm from '@/components/dashboard/TipForm';
+import { useWallet } from '@solana/wallet-adapter-react';
+import { useRouter } from 'next/navigation';
 
 export default function Dashboard() {
   const [open, setOpen] = useState(false);
+  const { connected } = useWallet();
+  const router = useRouter();
 
+  if (!connected) {
+    router.push('/');  
+    return null; 
+  }
   return (
     <div className="relative overflow-hidden py-24 lg:py-32">
       <div
